@@ -4,10 +4,10 @@ import PropTypes from 'prop-types'
 import MessagesList from '../MessagesList/MessagesList'
 import MessageEditor from '../MessageEditor/MessageEditor'
 
-import { messages } from '../../messages'
-import { users } from '../../users'
+import { messages } from '../../mockMessages'
+import { users } from '../../mockUsers'
 
-const ChatWindow = ({ selectedUser }) => {
+const ChatWindow = ({ selectedUserId }) => {
   const [allMessages, setAllMessages] = useState(messages)
   const [messageToEdit, setMessageToEdit] = useState(null)
 
@@ -20,22 +20,21 @@ const ChatWindow = ({ selectedUser }) => {
             text,
             updatedAt: Date.now(),
           }
-        } else {
-          return message
         }
+        return message
       })
 
       setAllMessages(updatedMessages)
       setMessageToEdit(null)
     } else {
-      const currentUser = users.find((user) => user.userId === selectedUser)
+      const currentUser = users.find((user) => user.userId === selectedUserId)
       const newMessage = {
-        id: `${Date.now()}-${selectedUser}`,
+        id: `${Date.now()}-${selectedUserId}`,
         createdAt: Date.now(),
         updatedAt: Date.now(),
         text,
         type: 'txt',
-        userId: selectedUser,
+        userId: selectedUserId,
         userFullName: currentUser.fullName,
         avatar: currentUser.avatar
       }
@@ -57,7 +56,7 @@ const ChatWindow = ({ selectedUser }) => {
   return (
     <div className='chat-window-container'>
       <MessagesList
-        selectedUser={selectedUser}
+        selectedUserId={selectedUserId}
         messages={allMessages}
         deleteMessage={deleteMessage}
         editMessage={editMessage}
@@ -72,7 +71,7 @@ const ChatWindow = ({ selectedUser }) => {
 }
 
 ChatWindow.propTypes = {
-  selectedUser: PropTypes.number
+  selectedUserId: PropTypes.number
 }
 
 export default ChatWindow

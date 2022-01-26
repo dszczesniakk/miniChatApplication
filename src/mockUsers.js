@@ -1,5 +1,5 @@
-import Cat from './cat.png'
-import Hamster from './hamster.png'
+import Cat from './assets/cat.png'
+import Hamster from './assets/hamster.png'
 
 export const users = [
   {

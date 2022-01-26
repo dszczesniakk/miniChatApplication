@@ -3,14 +3,14 @@ import PropTypes from 'prop-types'
 
 import Message from '../Message/Message'
 
-const MessagesList = ({ selectedUser, messages, editMessage, deleteMessage }) => {
+const MessagesList = ({ selectedUserId, messages, editMessage, deleteMessage }) => {
   return (
     <div className='messages-list'>
       {messages.map((message, i) => (
         <Message
-          key={`${i}-${message.createdAt}`}
+          key={message.id}
           messageData={message}
-          selectedUser={selectedUser}
+          selectedUserId={selectedUserId}
           editMessage={editMessage}
           deleteMessage={deleteMessage}
         />
@@ -20,7 +20,7 @@ const MessagesList = ({ selectedUser, messages, editMessage, deleteMessage }) =>
 }
 
 MessagesList.propTypes = {
-  selectedUser: PropTypes.number,
+  selectedUserId: PropTypes.number,
   messages: PropTypes.array,
   editMessage: PropTypes.func,
   deleteMessage: PropTypes.func

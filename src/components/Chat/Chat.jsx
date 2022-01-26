@@ -1,19 +1,24 @@
 import React, { useState } from 'react'
-import SwitchContainer from '../SwitchContainer/SwitchContainer'
+
 import ChatWindow from '../ChatWindow/ChatWindow'
+import Switch from '../Switch/Switch'
 
 const Chat = () => {
-  const [selectedUser, setSelectedUser] = useState(1)
+  const [selectedUserId, setSelectedUserId] = useState(1)
 
   const onToggle = () => {
-    selectedUser === 1 ? setSelectedUser(2) : setSelectedUser(1)
+    selectedUserId === 1 ? setSelectedUserId(2) : setSelectedUserId(1)
   }
 
   return (
     <div className='main-chat-app'>
       <div className='header'>Chat Application</div>
-      <SwitchContainer selectedUser={selectedUser} onChange={onToggle}/>
-      <ChatWindow selectedUser={selectedUser}/>
+      <div className='switch-container'>
+        <div className='switch-option'>John Doe</div>
+        <Switch isChecked={selectedUserId === 2} onChange={onToggle} />
+        <div className='switch-option'>Krystian Pach</div>
+      </div>
+      <ChatWindow selectedUserId={selectedUserId}/>
     </div>
   )
 }

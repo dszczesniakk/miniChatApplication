@@ -20,11 +20,6 @@ const MessageEditor = ({ sendMessage, messageToEdit, closeEditMode }) => {
   }
 
   useEffect(() => {
-    document.getElementById("messageinput").addEventListener('keypress', onEnterPress)
-    return () => document.getElementById("messageinput").removeEventListener('keypress', onEnterPress)
-  })
-
-  useEffect(() => {
     if (messageToEdit) {
       setProvidedText(messageToEdit.text)
       if (textRef.current) {
@@ -36,7 +31,8 @@ const MessageEditor = ({ sendMessage, messageToEdit, closeEditMode }) => {
   return (
     <div className='message-editor'>
       <input
-        id='messageinput'
+        // id='messageinput'
+        onKeyPress={(e) => onEnterPress(e)}
         ref={textRef}
         type='text'
         value={providedText}
@@ -46,14 +42,14 @@ const MessageEditor = ({ sendMessage, messageToEdit, closeEditMode }) => {
       {messageToEdit ? (
         <div
           className='cancel-button'
-          onClick={() => closeEdit()}
+          onClick={closeEdit}
         >
           Cancel editing
         </div>
       ) : null}
       <div
         className={providedText ? 'send-button' : 'send-button disabled'}
-        onClick={() => prepareSendMessage()}
+        onClick={prepareSendMessage}
       >
         {messageToEdit ? 'Edit' : 'Send'}
       </div>
