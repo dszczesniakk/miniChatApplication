@@ -1,0 +1,41 @@
+.message-editor {
+  border: 1px solid grey;
+  padding: 10px 10px;
+  margin: 0 auto;
+  display: flex;
+  bottom: 0;
+  background-color: #e3e3e3;
+
+  input {
+    width: 100%;
+    padding: 2px 5px;
+    border-color: transparent;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .send-button {
+    background-color: #0491e2;
+    margin-left: 10px;
+    padding: 5px 10px;
+    color: white;
+    cursor: pointer;
+
+    &.disabled {
+      cursor: auto;
+      pointer-events: none;
+      background-color: grey;
+    }
+  }
+
+  .cancel-button {
+    background-color: red;
+    margin-left: 10px;
+    padding: 5px 10px;
+    color: white;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+}

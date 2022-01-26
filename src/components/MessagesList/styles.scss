@@ -1,0 +1,10 @@
+.messages-list {
+  border: 1px solid grey;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  height: calc(100vh - 165px);
+  padding: 10px;
+  position: relative;
+  margin-bottom: -1px;
+  overflow: auto;
+}
